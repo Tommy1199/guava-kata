@@ -60,7 +60,7 @@ public class CustomerTest {
 
 	@Test
 	public void shouldOnlyTakeFirstNameAndLastNameForHashing() {
-		HashSet<Customer> customers = new HashSet<>();
+		HashSet<Customer> customers = new HashSet<Customer>();
 		customers.add(new Customer("Peter", "Maier", "Pit"));
 		customers.add(new Customer("Peter", "Maier", null));
 		assertThat(customers.size(), is(1));
