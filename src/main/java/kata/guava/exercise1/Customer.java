@@ -8,6 +8,14 @@ public class Customer {
 	private final String lastName;
 	private final String nickName;
 
+    /**
+     * This is a typical constructor with basic checks of the parameters. Try to refactor it with the help of
+     * {@link com.google.common.base.Preconditions}.
+     *
+     * Hint: With JDK7 you can replace the null checks with Objects#requireNonNull instead of
+     * {@link com.google.common.base.Preconditions#checkNotNull(Object)}, but it has no equivalent for checking the
+     * argument. So I would still prefer to use all checks from guava to avoid mixing several classes up.
+     */
 	public Customer(String firstName, String lastName, String nickName) {
 		if (firstName == null) {
 			throw new NullPointerException("firstName cannot be null");
@@ -48,6 +56,13 @@ public class Customer {
 		return firstName;
 	}
 
+    /**
+     * This is the way how a auto-generated hashCode method from an IDE looks like. Replace the code
+     * with the help of {@link com.google.common.base.Objects#hashCode(Object...)}. This improves the readability
+     * as you get rid of magic numbers and calculation.
+     *
+     * Hint: If you are using already JDK7, use the contained Objects#hash of the JDK instead.
+     */
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -57,6 +72,12 @@ public class Customer {
 		return result;
 	}
 
+    /**
+     * This is also an auto-generated method which is pretty hard to read as it is always a mix of null checks and
+     * equality checks. Use {@link com.google.common.base.Objects#equal(Object, Object)} to improve it.
+     *
+     * Hint: Again, if you are using JDK 7, use the Objects#equals method in the JDK instead.
+     */
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -78,7 +99,10 @@ public class Customer {
 			return false;
 		return true;
 	}
-    
+
+    /**
+     * Use {@link com.google.common.base.MoreObjects.ToStringHelper} to create the same output than below.
+     */
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder().append("Customer{").append("lastName=").append(lastName)
