@@ -78,7 +78,7 @@ public class Customer {
 			return false;
 		return true;
 	}
-
+    
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder().append("Customer{").append("lastName=").append(lastName)
