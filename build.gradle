@@ -1,13 +1,11 @@
 apply plugin: 'java'
-apply plugin: 'eclipse'
-apply plugin: 'idea'
 
 repositories {
-	mavenCentral()
+    mavenCentral()
 }
 
 dependencies {
-	compile 'com.google.guava:guava:19.0'
-	testCompile 'junit:junit:4.+'
-	testCompile 'org.assertj:assertj-core:3.4.1'
+    compile 'com.google.guava:guava:19.0'
+    testCompile 'junit:junit:4.+'
+    testCompile 'org.assertj:assertj-core:3.4.1'
 }
