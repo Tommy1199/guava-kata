@@ -11,7 +11,7 @@ public class CustomerTest {
 
     @Test(expected = NullPointerException.class)
     public void shouldThrowNullPointerWhenFirstNameIsNull() {
-        new Customer(null, "Maier", "Pit");
+        new Customer(null, "Mann", "Pit");
     }
 
     @Test(expected = NullPointerException.class)
@@ -21,7 +21,7 @@ public class CustomerTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void shouldThrowIllegalArgumentExceptionWhenFirstNameIsEmpty() {
-        new Customer("", "Maier", "Pit");
+        new Customer("", "Mann", "Pit");
     }
 
     @Test(expected = IllegalArgumentException.class)
@@ -31,45 +31,45 @@ public class CustomerTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void shouldThrowIllegalArgumentExceptionWhenNickNameIsEmpty() {
-        new Customer("Peter", "Maier", "");
+        new Customer("Peter", "Mann", "");
     }
 
     @Test
     public void shouldAddAllCustomerInfoToString() {
-        Customer customer = new Customer("Peter", "Maier", "Pit");
-        assertThat(customer.toString()).isEqualTo("Customer{lastName=Maier, firstName=Peter, nickName=Pit}");
+        Customer customer = new Customer("Peter", "Mann", "Pit");
+        assertThat(customer.toString()).isEqualTo("Customer{lastName=Mann, firstName=Peter, nickName=Pit}");
     }
 
     @Test
     public void shouldIgnoreNickNameIfNullInToString() {
-        Customer customer = new Customer("Peter", "Maier", null);
-        assertThat(customer.toString()).isEqualTo("Customer{lastName=Maier, firstName=Peter}");
+        Customer customer = new Customer("Peter", "Mann", null);
+        assertThat(customer.toString()).isEqualTo("Customer{lastName=Mann, firstName=Peter}");
     }
 
     @Test
     public void shouldReturnNickNameAsPreferredNameWhenNotNull() {
-        Customer customer = new Customer("Peter", "Maier", "Pit");
+        Customer customer = new Customer("Peter", "Mann", "Pit");
         assertThat(customer.getPreferredName()).isEqualTo("Pit");
     }
 
     @Test
     public void shouldReturnFirstNameAsPreferredNameWhenNickNameIsNull() {
-        Customer customer = new Customer("Peter", "Maier", null);
+        Customer customer = new Customer("Peter", "Mann", null);
         assertThat(customer.getPreferredName()).isEqualTo("Peter");
     }
 
     @Test
     public void shouldOnlyTakeFirstNameAndLastNameForHashing() {
         Set<Customer> customers = new HashSet<Customer>();
-        customers.add(new Customer("Peter", "Maier", "Pit"));
-        customers.add(new Customer("Peter", "Maier", null));
+        customers.add(new Customer("Peter", "Mann", "Pit"));
+        customers.add(new Customer("Peter", "Mann", null));
         assertThat(customers.size()).isEqualTo(1);
     }
 
     @Test
     public void shouldIgnoreNickNameForEquality() {
-        Customer customerWithNickName = new Customer("Peter", "Maier", "Pit");
-        Customer customerWithoutNickname = new Customer("Peter", "Maier", null);
+        Customer customerWithNickName = new Customer("Peter", "Mann", "Pit");
+        Customer customerWithoutNickname = new Customer("Peter", "Mann", null);
         assertThat(customerWithNickName).isEqualTo(customerWithoutNickname);
     }
 }
